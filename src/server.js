@@ -1,4 +1,5 @@
 //core
+require('dotenv').config()
 const express = require("express"); //framwork http
 const cors = require("cors"); // cors da aplicacao (permite com que outros servidores possam fazer requisicoes)
 const { sequelize } = require("./database/connection"); //database connector
