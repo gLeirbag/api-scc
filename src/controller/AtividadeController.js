@@ -37,7 +37,19 @@ class AtividadeController {
     try {
       const todosAtividade = await Atividade.findAll();
 
-      return res.status(200).json({ atividade: todosAtividade });
+      return res.status(200).send(todosAtividade);
+    } catch {
+      return res.status(400).json({ erro: "algo deu errado" });
+    }
+  }
+
+  static async encontrarTodosPorCronograma(req, res) {
+    try {
+      const cronogramaId = req.params.cronogramaId;
+      const todosAtividade = await Atividade.findAll({
+        where: { cronogramaId },
+      });
+      return res.status(200).json(todosAtividade);
     } catch {
       return res.status(400).json({ erro: "algo deu errado" });
     }
@@ -82,7 +94,7 @@ class AtividadeController {
 
       await Atividade.destroy({ where: { id } });
 
-      return res.status(200).send();
+      return res.status(200).send(true);
     } catch {
       return res.status(400).json({ erro: "algo deu errado" });
     }

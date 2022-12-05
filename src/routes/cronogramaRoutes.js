@@ -21,7 +21,7 @@ cronogramaRouter.get("/cronograma", async (req, res) => {
   }
 });
 
-cronogramaRouter.get("/cronograma/usuarioId=:id", async (req, res) => {
+cronogramaRouter.get("/cronograma/usuarioId=:usuarioId", async (req, res) => {
   try {
     await CronogramaController.encontrarTodosPorUsuario(req, res);
   } catch (erro) {
@@ -51,7 +51,7 @@ cronogramaRouter.put("/cronograma", async (req, res) => {
 
 cronogramaRouter.delete("/cronograma/:id", async (req, res) => {
   try {
-    await CronogramaController.delete(req, res);
+    await CronogramaController.deletar(req, res);
   } catch (erro) {
     console.log(erro);
     res.status(400).json({ erro: "Algo deu errado" });

@@ -40,11 +40,13 @@ class CronogramaController {
 
   static async encontrarTodosPorUsuario(req, res) {
     try {
-      const usuarioId = req.params.id;
+      const usuarioId = req.params.usuarioId;
 
-      const todosCronograma = await Cronograma.findAll({ where: {usuarioId} });
+      const todosCronograma = await Cronograma.findAll({
+        where: { usuarioId },
+      });
 
-      return res.status(200).json( todosCronograma );
+      return res.status(200).json(todosCronograma);
     } catch {
       return res.status(400).json({ erro: "algo deu errado" });
     }
@@ -90,7 +92,7 @@ class CronogramaController {
 
       await Cronograma.destroy({ where: { id } });
 
-      return res.status(200).send();
+      return res.status(200).send(true);
     } catch {
       return res.status(400).json({ erro: "algo deu errado" });
     }

@@ -13,11 +13,11 @@ const Atividade = sequelize.define("atividade",{
     allowNull: false,
   },
   horarioInicial: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   horarioFinal: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false
   }
 });
